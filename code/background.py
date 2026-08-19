@@ -1,12 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from Entity import Entity
-
+import pygame
+from entity import Entity
 
 class Background(Entity):
-    def __init__(self):
-        pass
+    def __init__(self, surf: pygame.Surface, rect: pygame.Rect):
+        super().__init__("Background", surf, rect)
 
-    def move(self, ):
+    def move(self) -> None:
+        # The background doesn't move, so we just pass
         pass
