@@ -27,26 +27,11 @@ class EntityFactory:
             rect = surf.get_rect(center=(window.get_width() - 100, window.get_height() - 100))
             return Enemy(surf, rect)
 
-
         elif entity_type == "Background":
+            surf = pygame.image.load("../assets/cenario.png").convert()
+            surf = pygame.transform.scale(surf, (window.get_width(), window.get_height()))
+            rect = surf.get_rect(topleft=(0, 0))
+            return Background(surf, rect)
 
-            raw_surf = pygame.image.load("../assets/ground.png").convert_alpha()
-
-            raw_surf = pygame.transform.scale(raw_surf, (64, 64))
-
-            bg_surf = pygame.Surface((window.get_width(), window.get_height()))
-
-            bg_surf.fill((104, 159, 56))
-
-            # Loop que faz o carimbo do mosaico
-
-            for x in range(0, window.get_width(), 64):
-
-                for y in range(0, window.get_height(), 64):
-                    bg_surf.blit(raw_surf, (x, y))
-
-            rect = bg_surf.get_rect(topleft=(0, 0))
-
-            return Background(bg_surf, rect)
 
         return None

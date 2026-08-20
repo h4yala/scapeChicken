@@ -8,33 +8,38 @@ import sys
 class Menu:
     def __init__(self, window: pygame.Surface):
         self.window = window
-        self.title_font = pygame.font.Font(None, 80)
-        self.font = pygame.font.Font(None, 40)
-        self.instruction_font = pygame.font.Font(None, 30)
+        self.title_font = pygame.font.Font("../assets/hayFarm.TTF", 65)
+        self.font = pygame.font.Font("../assets/scapeChicken.ttf", 40)
+        self.instruction_font = pygame.font.Font("../assets/game.ttf", 30)
 
     def run(self) -> None:
         menu_running = True
         clock = pygame.time.Clock()
 
-        # Menu loop
+        # --- Audio Setup ---
+        pygame.mixer.init()
+        pygame.mixer.music.load("../assets/menu-music.wav")
+        pygame.mixer.music.set_volume(1.0)
+        pygame.mixer.music.play(-1)
+
         while menu_running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
 
-                # If SPACE is pressed, exit the menu loop to start the game
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
+                        # Para a música antes de sair do menu e ir para a fase
+                        #pygame.mixer.music.stop()
                         menu_running = False
 
-                        # Drawing the Menu
-            self.window.fill((104, 159, 56))  # Darker green background
+            # Drawing the Menu
+            self.window.fill((104, 159, 56))
 
             title_text = self.title_font.render("SCAPE CHICKEN", True, (255, 255, 255))
             self.window.blit(title_text, title_text.get_rect(center=(self.window.get_width() // 2, 150)))
 
-            # Displaying required controls
             controls_text = self.font.render("CONTROLS:", True, (0, 0, 0))
             self.window.blit(controls_text, controls_text.get_rect(center=(self.window.get_width() // 2, 300)))
 

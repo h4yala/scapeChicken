@@ -5,6 +5,7 @@ import pygame
 import sys
 from menu import Menu
 from level import Level
+from game_over import GameOver  # Importa a classe nova!
 
 
 class Game:
@@ -15,16 +16,20 @@ class Game:
         self.window = pygame.display.set_mode((self.width, self.height))
         pygame.display.set_caption("Scape Chicken - HayFarm")
 
-        # Instantiate Menu and Level
-        self.menu = Menu(self.window)
-        self.level = Level(self.window, "Level 1")
-
     def run(self) -> None:
-        # 1. Run the Menu
-        self.menu.run()
+        # Loop infinito da Máquina de Estados
+        while True:
+            # 1. Roda o Menu
+            menu = Menu(self.window)
+            menu.run()
 
-        # 2. Run the Level
-        self.level.run()
+            # 2. Roda a Fase e salva os pontos quando o jogador morrer
+            level = Level(self.window, "Level 1")
+            pontuacao_final = level.run()
+
+            # 3. Roda o Game Over passando os pontos
+            tela_morte = GameOver(self.window, pontuacao_final)
+            tela_morte.run()
 
 
 if __name__ == "__main__":
