@@ -23,7 +23,6 @@ class EntityFactory:
             surf = pygame.image.load("../assets/chicken.png").convert_alpha()
             chicken_size = surf.get_size()
             surf = pygame.transform.scale(surf, (chicken_size[0] * 3, chicken_size[1] * 3))
-            # Spawn at the bottom right corner
             rect = surf.get_rect(center=(window.get_width() - 100, window.get_height() - 100))
             return Enemy(surf, rect)
 

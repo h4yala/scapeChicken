@@ -41,7 +41,7 @@ class Level:
         # --- invincibility variables ---
         self.is_invincible = False
         self.last_hit_time = 0
-        self.invincibility_duration = 1500  # 1.5 seconds in milliseconds
+        self.invincibility_duration = 1500
 
         # 1. Background
         if self.level_number % 2 != 0:
@@ -58,7 +58,6 @@ class Level:
         # 3. Enemy
         self.enemy = EntityFactory.get_entity("Enemy", self.window)
         if self.enemy:
-            # A cada fase, a galinha fica 1 pixel mais rápida em ambas as direções
             aumento_velocidade = (self.level_number - 1)
             self.enemy.speed_x += aumento_velocidade
             self.enemy.speed_y += aumento_velocidade
@@ -109,7 +108,6 @@ class Level:
                     print("Jelly Crafted!")
 
                     if self.jelly_count >= self.level_number:
-                        pygame.mixer.music.stop()
                         return True, self.score
 
             # enemy collision (only hits if NOT invincible)
@@ -120,7 +118,6 @@ class Level:
                 self.som_dano.play()
 
                 if self.lives <= 0:
-                    pygame.mixer.music.stop()
                     return False, self.score
 
             # --- invincibility & blinking logic ---

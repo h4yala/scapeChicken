@@ -9,7 +9,6 @@ class Menu:
     def __init__(self, window: pygame.Surface):
         self.window = window
 
-        # Carrega a arte de fundo do Menu
         self.bg_img = pygame.image.load("../assets/menu_bg.png").convert()
         self.bg_img = pygame.transform.scale(self.bg_img, (WIN_WIDTH, WIN_HEIGHT))
 
@@ -55,7 +54,7 @@ class Menu:
             for i in range(len(MENU_OPTION)):
                 self.menu_text(40, MENU_OPTION[i], C_BLUE, (50, 230 + 50 * i))
 
-            self.menu_text(25, "Aperte a tecla ESPAÇO para jogar", C_WHITE, (WIN_WIDTH / 2, 575), "center")
+            self.menu_text(25, "Aperte a tecla ESPAÇO para jogar e use as SETAS para correr", C_WHITE, (WIN_WIDTH / 2, 575), "center")
 
             pygame.display.flip()
             clock.tick(60)

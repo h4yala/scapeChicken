@@ -9,5 +9,4 @@ class Background(Entity):
         super().__init__("Background", surf, rect)
 
     def move(self) -> None:
-        # The background doesn't move, so we just pass
         pass

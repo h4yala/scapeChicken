@@ -10,5 +10,4 @@ class Entity:
         self.rect = rect
 
     def move(self) -> None:
-        # To be overridden by child classes (Player, Enemy, etc.)
         pass
