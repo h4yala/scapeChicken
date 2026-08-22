@@ -1,0 +1,12 @@
+# c
+C_WHITE = (255, 255, 255)
+C_YELLOW = (255, 255, 0)
+C_BLUE = (29, 38, 68)
+C_RED = (179, 9, 9)
+
+# m
+MENU_OPTION = ('PLAY', 'SCORE', 'EXIT')
+
+# w
+WIN_WIDTH = 800
+WIN_HEIGHT = 600

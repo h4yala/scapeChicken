@@ -27,11 +27,18 @@ class EntityFactory:
             rect = surf.get_rect(center=(window.get_width() - 100, window.get_height() - 100))
             return Enemy(surf, rect)
 
-        elif entity_type == "Background":
-            surf = pygame.image.load("../assets/cenario.png").convert()
+
+        elif entity_type == "Background_Claro":
+            surf = pygame.image.load("../assets/Background_Claro.png").convert()
             surf = pygame.transform.scale(surf, (window.get_width(), window.get_height()))
             rect = surf.get_rect(topleft=(0, 0))
             return Background(surf, rect)
 
+
+        elif entity_type == "Background_Escuro":
+            surf = pygame.image.load("../assets/Background_Escuro.png").convert()
+            surf = pygame.transform.scale(surf, (window.get_width(), window.get_height()))
+            rect = surf.get_rect(topleft=(0, 0))
+            return Background(surf, rect)
 
         return None

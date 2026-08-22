@@ -14,7 +14,6 @@ class Enemy(Entity):
         self.rect.x += self.speed_x
         self.rect.y += self.speed_y
 
-        # Bouncing logic (Assuming an 800x600 window)
         if self.rect.left < 0 or self.rect.right > 800:
             self.speed_x *= -1
         if self.rect.top < 0 or self.rect.bottom > 600:
